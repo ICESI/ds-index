@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.ssh.insert_key = false
+  config.vm.define :centos_node do |node|
+    node.vm.box = "centos64_updated4"
+    node.vm.network :private_network, ip: "192.168.56.101"
+    node.vm.network "public_network", :bridge => "eth4", ip:"192.168.131.100", :auto_config => "false", :netmask => "255.255.255.0"
+    node.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "1024","--cpus", "1", "--name", "centos_ejemplo4" ]
+    end
+    config.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = "cookbooks"
+      chef.add_recipe "mirror"
+      chef.add_recipe "seguridad"
+      chef.json ={"aptmirror" => {"server" => "192.168.131.254"}}    
+    end
+  end
+end

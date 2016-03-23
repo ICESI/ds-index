@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/distribuidos/Documentos/SistemasDistribuidos/Taller2/Ejercicio5","disabled":false},"v-csc-1":{"id":"v-csc-1","guestpath":"/tmp/vagrant-chef/2f6b751519600c8127eed49d5928be0f/cookbooks","hostpath":"/home/distribuidos/Documentos/SistemasDistribuidos/Taller2/Ejercicio5/cookbooks","disabled":false}}}
