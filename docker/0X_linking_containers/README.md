@@ -78,7 +78,8 @@ $ docker run --rm -it --name temporary_client --link postgresql_database:pg ubun
 ```
 
 From the output of the ***env*** command you can check that PG_PORT_5432_TCP_PORT and 
-PG_PORT_5432_TCP_ADDR variables were created. 
+PG_PORT_5432_TCP_ADDR variables were created. You can type exit to leave the container and it will
+be self-destroyed due to the --rm docker parameter
 
 
 ### Link flask container and previous created postgresql container
