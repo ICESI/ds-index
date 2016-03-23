@@ -1,18 +1,31 @@
+#Operating Systems www.icesi.edu.co/facultad_ingenieria/
 
-Following are the execution instructions
+#Docker Containers
 
-#Build the image postgresql_base
-docker build -t postgresql_base .
+#Linking Containers
 
-#Build the image flask_base
-docker build -t flask_base .
+In order to execute this example you must follow the instructions above
 
-#Create a postgresql container with an active service
-docker run -p 5432:5432 --name postgresql_database postgresql_base 
+##Build the base images
 
-#Run script dbmanage.py script from /web/flask_container/smartlabs/scripts
-python dbmanage.py create
-python dbmanage.py insert
+*Build the base image for postgresql
+$docker build -t postgresql_base .
 
-#Create a container linked with a postregsql container
+*Build the base image for flask
+$docker build -t flask_base .
+
+##Create a postgresql container from base image
+
+*Create a postgresql container from base image with a postgresql active service
+$docker run -p 5432:5432 --name postgresql_database postgresql_base 
+
+##Create a schema and populate the database
+
+*Run script dbmanage.py from /web/flask_container/smartlabs/scripts
+$python dbmanage.py create
+$python dbmanage.py insert
+
+##Create a flask container linked with the previous created postgresql container
+
+*Create a flask container linked with the previous created postregsql container
 docker run -p 5000:5000 -d -e "SMARTLABS_SETTINGS=production_settings.py" --name flask_web --link postgresql_database:pg flask_base
