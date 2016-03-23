@@ -2,7 +2,7 @@
 
 #Introduction
 
-This is the repository for the practices of ICESI university distributed systems course. In this course students learn about the principles of distributed systems and the use of tools for self-deployment of infraestructure
+This is the repository for the practices of ICESI university distributed systems course. In this course students learn about the principles of distributed systems and use of tools for self-deployment of infraestructure
 
 The following topics are study in the course:
 * Virtualization

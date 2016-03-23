@@ -6,9 +6,9 @@
 
 In order to execute this example you must follow the instructions above
 
-##Build the base images
+* Build the base images
 
-*Build the base image for postgresql
+- Build the base image for postgresql
 $docker build -t postgresql_base .
 
 *Build the base image for flask
