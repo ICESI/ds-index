@@ -69,8 +69,16 @@ $ python dbmanage.py insert
 
 ### Check environment variables between containers
 
-When a container is linked to another container some environment variables are created. In this section 
-PG_PORT_5432_TCP_PORT and PG_PORT_5432_TCP_ADDR variables are used. 
+Create a temporary container linked with the previous postresql_database created container. This
+is done just to show that some environment variables are created. pg is an alias for the connection
+
+```sh
+$ docker run --rm -it --name temporary_client --link postgresql_database:pg ubuntu bash
+# env
+```
+
+From the output of the ***env*** command you can check that PG_PORT_5432_TCP_PORT and 
+PG_PORT_5432_TCP_ADDR variables were created. 
 
 
 ### Link flask container and previous created postgresql container
