@@ -94,7 +94,7 @@ Second step is to create SMARTLABS_SETTINGS environment variable in your product
 export SMARTLABS_SETTINGS=production_settings.py
 ```
 
-When flask server starts, its relative path is inside app folder ***web/flask_container/smartlabs/app*** so it is expected that production_settings.py be in this folder  
+When flask server starts, its relative path is inside app folder ***web/flask_container/smartlabs/app*** so it is expected that production_settings.py reside in this folder  
 
 Finally create a flask container linked with the previous created postregsql container. 
 
@@ -104,5 +104,7 @@ $ docker run -p 5000:5000 -d -e "SMARTLABS_SETTINGS=production_settings.py" --na
 
 ### References
 [**Link environment variables reference**][container-environment]
+[**Modify container parameters**][container-settings]
 
 [container-environment]: https://docs.docker.com/compose/link-env-deprecated/
+[container-settings]: https://docs.docker.com/engine/reference/run/
