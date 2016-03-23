@@ -1,42 +1,108 @@
 # Operating Systems www.icesi.edu.co/facultad_ingenieria/
 
-# Docker Containers
+# Docker - Linking Containers
 
-# Linking Containers
 
-In order to execute this example you must follow the instructions above
+This example allows developer to run the application in a development environment and a production
+environment without making any changes to the source code. This is done through environment variables of the
+operating system. In the following piece of code the application checks if SMARTLABS_SETTINGS environment 
+variable exist, if the variable do not exist, default settings at default_settings.py are employed.
 
-## Build the base images
-
-* Build the base image for postgresql
-
-```sh
-docker build -t postgresql_base .
+**__init__.py**
+```python
+# Declares app
+app = Flask(__name__)
+#Load default configurations, usually from developer environment
+app.config.from_object('app.default_settings')
+#Overide configurations with the production server ones
+app.config.from_envvar('SMARTLABS_SETTINGS', silent=True)
 ```
 
-* Build the base image for flask
+In the sections below, instructions for executing linking container example are presented
+
+### Clone the repository
+
+Clone distributed system repository and go to ***docker/0X_linking_containers*** folder
+
 ```sh
-docker build -t flask_base .
+git clone https://github.com/ICESI/distributed-systems.git
 ```
 
-## Create a postgresql container from base image
+### Build the base images
 
-* Create a postgresql container from base image with a postgresql active service
+Go to ***database/postgresql_container/*** and build the base image for postgresql
+
 ```sh
-docker run -p 5432:5432 --name postgresql_database postgresql_base 
+$ docker build -t postgresql_base .
 ```
 
-## Create a schema and populate the database
-
-* Run script dbmanage.py from /web/flask_container/smartlabs/scripts
+Go to ***web/flask/container/*** and build the base image for flask
 ```sh
-python dbmanage.py create
-python dbmanage.py insert
+$ docker build -t flask_base .
 ```
 
-## Create a flask container linked with the previous created postgresql container
+### Create a postgresql container from base image
 
-* Create a flask container linked with the previous created postregsql container
+Create a postgresql container from base image. The container starts with the postgresql service activated
 ```sh
-docker run -p 5000:5000 -d -e "SMARTLABS_SETTINGS=production_settings.py" --name flask_web --link postgresql_database:pg flask_base
+$ docker run -p 5432:5432 --name postgresql_database postgresql_base 
 ```
+
+### Create a schema and populate the database
+
+You must write down the ip of *docker0* interface and edit the file
+***web/flask_container/smartlabs/app/default_settings.py*** 
+
+**default_settings.py**
+```python
+DEBUG=True,
+DATABASE='postgresql://smartlabs:smartlabspass@192.168.99.100:5432/smartlabs'
+```
+
+Then run the script dbmanage.py from ***web/flask_container/smartlabs/scripts***
+to create the schema for the test application and populate the tables
+
+```sh
+$ python dbmanage.py create
+$ python dbmanage.py insert
+```
+
+### Check environment variables between containers
+
+When a container is linked to another container some environment variables are created. In this section 
+PG_PORT_5432_TCP_PORT and PG_PORT_5432_TCP_ADDR variables are used. 
+
+
+### Link flask container and previous created postgresql container
+
+First step is to check the contents at ***web/flask_container/smartlabs/app/production_settings.py***
+
+**production_settings.py**
+```python
+import os
+
+DEBUG=False,
+PORT=os.getenv("PG_PORT_5432_TCP_PORT"),
+ADDRESS= os.getenv("PG_PORT_5432_TCP_ADDR"),
+if PORT[0] != None and ADDRESS[0] != None:
+	DATABASE='postgresql://smartlabs:smartlabspass@'+ADDRESS[0]+':'+PORT[0]+'/smartlabs'
+```
+
+Second step is to create SMARTLABS_SETTINGS environment variable in your production environment, this is done with the docker -e parameter. It substitutes the following command in an operating system.
+
+```sh
+export SMARTLABS_SETTINGS=production_settings.py
+```
+
+When flask server starts, its relative path is inside app folder ***web/flask_container/smartlabs/app*** so it is expected that production_settings.py be in this folder  
+
+Finally create a flask container linked with the previous created postregsql container. 
+
+```sh
+$ docker run -p 5000:5000 -d -e "SMARTLABS_SETTINGS=production_settings.py" --name flask_web --link postgresql_database:pg flask_base
+```
+
+### References
+[**Link environment variables reference**][container-environment]
+
+[container-environment]: https://docs.docker.com/compose/link-env-deprecated/
