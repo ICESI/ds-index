@@ -111,9 +111,13 @@ Finally create a flask container linked with the previous created postregsql con
 $ docker run -p 5000:5000 -d -e "SMARTLABS_SETTINGS=production_settings.py" --name flask_web --link postgresql_database:pg flask_base
 ```
 
+### Activity
+Linking docker containers is now deprecated, use docker networking for linking containers as show in [**Docker Networking**][container-networking]
+
 ### References
 [**Link environment variables reference**][container-environment]
 [**Modify container parameters**][container-settings]
 
 [container-environment]: https://docs.docker.com/compose/link-env-deprecated/
 [container-settings]: https://docs.docker.com/engine/reference/run/
+[container-networking]: https://www.rethinkdb.com/blog/docker-networking/
