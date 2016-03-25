@@ -115,8 +115,9 @@ $ docker run -p 5000:5000 -d -e "SMARTLABS_SETTINGS=production_settings.py" --na
 Linking docker containers is now deprecated, use docker networking for linking containers as show in [**Docker Networking**][container-networking]
 
 ### References
-[**Link environment variables reference**][container-environment]
-[**Modify container parameters**][container-settings]
+[**Link environment variables reference**][container-environment] <br/>
+[**Modify container parameters**][container-settings] <br/>
+[**Docker Networking**][container-networking]
 
 [container-environment]: https://docs.docker.com/compose/link-env-deprecated/
 [container-settings]: https://docs.docker.com/engine/reference/run/
