@@ -34,7 +34,7 @@ the host system, so you can log into it to start your MPI applications.
 The following command will start one `mpi_head` container and three `mpi_node` containers: 
 
 ```
-$> docker-compose scale mpi_head=1 mpi_worker=3
+$> docker-compose scale mpi_head=1 mpi_node=3
 ```
 
 Once all containers are running, figure out the host port on which Docker exposes the  SSH server of the `mpi_head` container: 
