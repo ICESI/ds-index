@@ -1,0 +1,17 @@
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+	config.vm.define :mpi_master do |node_1|
+		node_1.vm.box = "precise32"
+		node_1.vm.network :private_network, ip: "172.40.0.2"
+		node_1.vm.provider :virtualbox do |vb|
+			vb.customize ["modifyvm", :id, "--memory", "128","--cpus", "1", "--name", "mpi_master" ]
+		end
+	end
+	config.vm.define :mpi_node1 do |node_2|
+		node_2.vm.box = "precise32"
+		node_2.vm.network :private_network, ip: "172.40.0.3"
+		node_2.vm.provider :virtualbox do |vb|
+			vb.customize ["modifyvm", :id, "--memory", "128","--cpus", "1", "--name", "mpi_node1" ]
+		end
+	end
+end

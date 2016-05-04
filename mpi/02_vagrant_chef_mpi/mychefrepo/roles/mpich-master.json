@@ -1,0 +1,13 @@
+{
+	"name": "mpich-master",
+	"chef_type": "role",
+	"json_class": "Chef::Role",
+	"run_list": [
+		"recipe[updatesourceslist]",
+		"recipe[server-packages]",
+		"recipe[configure-host]",
+		"recipe[server-mirror]",
+		"recipe[server-ssh]",
+		"recipe[mpi-example]"
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"aptmirror": {
+		"server": "192.168.131.254"
+	},
+	"hostconf": {
+		"hostmaster": "headnode",
+		"hostname": "node1"
+	},
+	"run_list": [
+		"role[mpich-node]"
+	]
+}

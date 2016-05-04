@@ -1,0 +1,12 @@
+mpi_head:
+  image: openmpi
+  ports: 
+   - "22"
+  links: 
+   - mpi_node
+  volumes:
+   - ./mpi4py_sources:/tmp
+mpi_node: 
+  image: openmpi
+  volumes:
+   - ./mpi4py_sources:/tmp
