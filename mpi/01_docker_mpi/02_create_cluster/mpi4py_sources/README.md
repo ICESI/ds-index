@@ -1,7 +1,6 @@
 ### Instructions
 
-Use the script get_ips.sh to get all the ip addresses from the cluster and
-export output to a file called machinefile
+Once you have logged into the mpi cluser as the user mpirun, use the script get_ips.sh to get all the ip addresses from the cluster and export script output to a file called machinefile
 
 ```
 chmod +x get_ips.sh
@@ -18,4 +17,6 @@ behaviour specifying how to divide the processes inside the machinefile)
 mpiexec -np 2 -machinefile machinefile python helloworld.py
 ```
 
-Exercise: Create a cluster of 5 nodes and try to launch 10 processes.
+### Assignment
+
+Create a cluster of 5 nodes and try to launch 10 processes.
