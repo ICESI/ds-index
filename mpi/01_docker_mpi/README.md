@@ -50,6 +50,10 @@ Now you know the port, you can login to the `mpi_head` container. The username i
 $> ssh -p 32769 mpirun@localhost
 ```
 
+### DEMO
+
+http://showterm.io/d97fe96c53c1a089f79ec
+
 ### Assignment
 
 1. Propose and implement an strategy in order to self-create the machinefile once mpirun is logged into the cluster.
