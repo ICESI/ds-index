@@ -1,6 +1,7 @@
 ### Instructions
 
-Once you have logged into the mpi cluser as the user mpirun, use the script get_ips.sh to get all the ip addresses from the cluster and export script output to a file called machinefile
+Once you have logged into the mpi cluser as the user mpirun, go to the shared volume (/tmp) and
+use the script get_ips.sh to get all the ip addresses from the cluster and export script output to a file called machinefile
 
 ```
 chmod +x get_ips.sh
