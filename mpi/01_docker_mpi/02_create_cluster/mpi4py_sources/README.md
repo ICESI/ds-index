@@ -8,7 +8,7 @@ chmod +x get_ips.sh
 . get_ips.sh > machinefile
 ```
 
-Use the above command in order to execute the helloworld application. np argument
+Use the command below in order to execute the helloworld.py example. np argument
 is used to specify the number of process to use with mpi. machinefile argument is
 use to specify a file where the ip machines of the cluster are stored. The number
 of process is divide evenly between the available machines (you can change this 
