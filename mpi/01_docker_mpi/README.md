@@ -9,9 +9,13 @@ the OpenMPI runtime and tools along with various supporting libraries,
 including the MPI4Py Python bindings. The container also runs an OpenSSH server
 so that multiple containers can be linked together and used via the user **mpirun**.
 
+```
+docker build -t openmpi .
+```
+
 ### Create the cluster
 
-With the code in **03_create_cluster** folder you can create a cluster of containers.
+With the code in **02_create_cluster** folder you can create a cluster of containers.
 In this folder there is a file called 'docker-compose.yml' which is used by docker-compose
 for deploying a mpi cluster based on docker containers 
 
