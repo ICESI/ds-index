@@ -6,9 +6,9 @@ This is the repository for the practices of ICESI university distributed systems
 
 The following topics are study in the course:
 * Virtualization
-* [Vagrant and Chef](https://github.com/ICESI/distributed-systems/tree/master/vagrant)
-* [Docker Containers (Microservices)](https://github.com/ICESI/distributed-systems/tree/master/docker)
+* [Vagrant and Chef](https://github.com/ICESI/ds-vagrant)
+* [Docker Containers (Microservices)](https://github.com/ICESI/ds-docker)
 * Kubernetes
-* MPI (Numpy and mpi4py)
+* [MPI (Numpy and mpi4py)](https://github.com/ICESI/ds-mpi)
 * GPU Programming (PyCuda)
-* Hadoop and Spark
+* [Hadoop and Spark](https://github.com/ICESI/ds-hadoop)
