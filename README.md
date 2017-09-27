@@ -8,8 +8,8 @@ The following topics are study in the course:
 * Virtualization
 * [Vagrant and Chef](https://github.com/ICESI/ds-vagrant)
 * [Docker Containers (Microservices)](https://github.com/ICESI/ds-docker)
-* [Docker compose]
-* [Docker swarm, kubernetes, nomad]
+* [Docker compose](https://github.com/ICESI/ds-docker-compose)
+* [Docker swarm, kubernetes, nomad](https://github.com/ICESI/ds-docker-cluster)
 * [Hadoop and Spark](https://github.com/ICESI/ds-hadoop)
 * [MPI (Numpy and mpi4py)](https://github.com/ICESI/ds-mpi)
 * GPU Programming (PyCuda)
